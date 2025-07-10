@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "type": "substation", "name": "Substation A" },
+      "geometry": { "type": "Point", "coordinates": [-75.0602, 42.3555] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "type": "substation", "name": "Substation B" },
+      "geometry": { "type": "Point", "coordinates": [-75.5, 42.7] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "type": "transmission", "name": "Line 1" },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-75.0602, 42.3555],
+          [-75.5, 42.7]
+        ]
+      }
+    }
+  ]
+}
+
