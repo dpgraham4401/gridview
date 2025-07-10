@@ -19,8 +19,7 @@ export function GridMap({mapKey}: GridMapProps) {
     const mapRef = useRef(null);
     const mapTileLayerProps = getMapBaseLayer(baseLayer, mapKey)
     return (
-        <MapContainer center={[latitude, longitude]} zoom={7} ref={mapRef}
-                      style={{height: "100vh", width: "100vw"}}>
+        <MapContainer center={[latitude, longitude]} zoom={7} ref={mapRef} className="w-full h-full">
             <TileLayer {...mapTileLayerProps} />
         </MapContainer>
     )
