@@ -7,6 +7,7 @@ import {MapContainer, TileLayer, GeoJSON} from "react-leaflet";
 import {getMapBaseLayer, type MapBaseLayerName} from "@/lib/map.ts";
 import {useEffect, useRef, useState} from "react";
 import 'leaflet/dist/leaflet.css';
+
 const latitude = 42.3555;
 const longitude = -75.0602;
 
@@ -21,7 +22,7 @@ export function GridMap({mapKey}: GridMapProps) {
     const [geoJson, setGeoJson] = useState<any>(null);
 
     useEffect(() => {
-        fetch('/sample-grid.geojson')
+        fetch('/sample-grid.json')
             .then(res => res.json())
             .then(setGeoJson);
     }, []);
@@ -42,7 +43,7 @@ export function GridMap({mapKey}: GridMapProps) {
         <MapContainer center={[latitude, longitude]} zoom={7} ref={mapRef} className="w-full h-full">
             <TileLayer {...mapTileLayerProps} />
             {geoJson && (
-                <GeoJSON data={geoJson} onEachFeature={onEachFeature} />
+                <GeoJSON data={geoJson} onEachFeature={onEachFeature}/>
             )}
         </MapContainer>
     )
