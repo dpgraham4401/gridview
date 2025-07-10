@@ -6,7 +6,7 @@ interface ViteTypeOptions {
 }
 
 interface ImportMetaEnv {
-    readonly VITE_MAPTILER_API_KEY: string;
+    readonly VITE_MAPTILER_API_KEY: string | undefined;
 }
 
 interface ImportMeta {
