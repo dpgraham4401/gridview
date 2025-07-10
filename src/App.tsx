@@ -11,7 +11,7 @@ import {useState} from "react";
 
 function App() {
     const mapTilerKey = import.meta.env.VITE_MAPTILER_API_KEY;
-    const [geoJson, setGeoJson] = useState<GeoJSON | null>(null);
+    const [geoJson, setGeoJson] = useState<GeoJSON | undefined>(undefined);
     const [uploadMessage, setUploadMessage] = useState<string | null>(null);
 
 
@@ -39,7 +39,7 @@ function App() {
             <div className="flex flex-col items-center justify-center">
                 <div
                     className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 w-11/12 h-[500px] md:h-[600px] xl:h-[700px] flex flex-col items-center transition-colors">
-                    <GridMap mapKey={mapTilerKey}/>
+                    <GridMap mapKey={mapTilerKey} geoJson={geoJson}/>
                 </div>
             </div>
         </div>

@@ -3,29 +3,25 @@
  * Uses {@link https://github.com/Leaflet/Leaflet Leaflet } under the hood,
  * which is well-maintained, relatively lightweight, good for 2D maps, should be mobile-friendly.
  */
-import {MapContainer, TileLayer, GeoJSON} from "react-leaflet";
 import {getMapBaseLayer, type MapBaseLayerName} from "@/lib/map.ts";
-import {useEffect, useRef, useState} from "react";
+import type {GeoJSON as GeoJSONType} from 'geojson';
+import {useRef, useState} from "react";
 import 'leaflet/dist/leaflet.css';
+import {GeoJSON, MapContainer, TileLayer} from "react-leaflet";
 
 const latitude = 42.3555;
 const longitude = -75.0602;
 
 interface GridMapProps {
     mapKey?: string;
+    geoJson?: GeoJSONType
 }
 
-export function GridMap({mapKey}: GridMapProps) {
+export function GridMap({mapKey, geoJson}: GridMapProps) {
     const [baseLayer] = useState<MapBaseLayerName>(mapKey ? 'mapTiler' : 'openStreetMap');
     const mapRef = useRef(null);
     const mapTileLayerProps = getMapBaseLayer(baseLayer, mapKey);
-    const [geoJson, setGeoJson] = useState<any>(null);
 
-    useEffect(() => {
-        fetch('/sample-grid.json')
-            .then(res => res.json())
-            .then(setGeoJson);
-    }, []);
 
     function onEachFeature(feature: any, layer: any) {
         if (feature.properties) {
