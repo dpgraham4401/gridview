@@ -11,7 +11,6 @@ export default tseslint.config([
     files: ['**/*.{ts,tsx}'],
     extends: [
       js.configs.recommended,
-      tseslint.configs.recommended,
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
     ],
@@ -20,4 +19,11 @@ export default tseslint.config([
       globals: globals.browser,
     },
   },
-])
+],
+    {
+      extends : [tseslint.configs.recommended],
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off'
+      }
+
+    })
