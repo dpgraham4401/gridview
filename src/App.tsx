@@ -33,7 +33,7 @@ function App() {
 
 
     return (
-        <div className="min-h-screen w-screen bg-gray-100 dark:bg-gray-900 transition-colors p-2">
+        <div className="min-h-screen w-screen bg-slate-50 dark:bg-gray-900 transition-colors p-2">
             <Header/>
             <GeoJsonUploader onChange={handleFileChange} uploadMessage={uploadMessage}/>
             <div className="flex flex-col items-center justify-center">
