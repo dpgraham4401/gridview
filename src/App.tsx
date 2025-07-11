@@ -5,6 +5,7 @@ import './App.css'
 import {GeoJsonUploader} from "@/components/GeoJsonUploader.tsx";
 import {GridMap} from "@/components/GridMap.tsx";
 import {Header} from "@/components/Header.tsx";
+import {parseGeoJSON} from "@/lib/parsers.ts";
 import type {GeoJSON} from "geojson";
 import {useState} from "react";
 
@@ -22,7 +23,7 @@ function App() {
         reader.onload = (event) => {
             try {
                 const json = JSON.parse(event.target?.result as string);
-                setGeoJson(json);
+                setGeoJson(parseGeoJSON(json));
                 setUploadMessage('JSON file uploaded and parsed successfully!');
             } catch {
                 setUploadMessage('Error: Invalid JSON file.');
