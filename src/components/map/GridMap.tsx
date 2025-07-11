@@ -3,11 +3,12 @@
  * Uses {@link https://github.com/Leaflet/Leaflet Leaflet } under the hood,
  * which is well-maintained, relatively lightweight, good for 2D maps, should be mobile-friendly.
  */
+import {StationMarker} from "@/components/map/StationMarker.tsx";
 import {getMapBaseLayer, type MapBaseLayerName} from "@/lib/map.ts";
 import type {GeoJSON as GeoJSONType} from 'geojson';
 import {useRef, useState} from "react";
 import 'leaflet/dist/leaflet.css';
-import {MapContainer, Marker, Polyline, Popup, TileLayer} from "react-leaflet";
+import {MapContainer, Polyline, TileLayer} from "react-leaflet";
 
 const latitude = 42.3555;
 const longitude = -75.0602;
@@ -29,18 +30,7 @@ export function GridMap({mapKey, geoJson}: GridMapProps) {
         <MapContainer center={[latitude, longitude]} zoom={7} ref={mapRef} className="w-full h-full">
             <TileLayer {...mapTileLayerProps} />
             {points.map((point, index) => (
-                <Marker
-                    key={index}
-                    position={[point.geometry.coordinates[1], point.geometry.coordinates[0]]}
-                    icon={L.divIcon({
-                        className: 'custom-marker',
-                        html: `<div style="background-color: ${point.properties.style?.color || 'blue'}; width: 20px; height: 20px; border-radius: 50%;"></div>`
-                    })}
-                >
-                    <Popup>
-                        {point.properties.name || 'Unnamed Point'}
-                    </Popup>
-                </Marker>
+                <StationMarker point={point} key={JSON.stringify(point.properties.name)}/>
             ))}
             {lines.map((line, index) => (
                 <Polyline
