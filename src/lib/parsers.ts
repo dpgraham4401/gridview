@@ -3,7 +3,7 @@
  */
 import type {FeatureCollection, GeoJSON, Geometry} from "geojson";
 
-export type ComponentStatus = 'operational' | 'propsed' | 'decommissioned';
+export type ComponentStatus = 'operational' | 'proposed' | 'decommissioned';
 
 interface PowerGridBaseProperties {
     name?: string;

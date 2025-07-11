@@ -5,7 +5,8 @@
       "type": "Feature",
       "properties": {
         "type": "substation",
-        "name": "Boston Substation"
+        "name": "Boston Substation",
+        "status": "operational"
       },
       "geometry": {
         "type": "Point",
@@ -19,7 +20,8 @@
       "type": "Feature",
       "properties": {
         "type": "substation",
-        "name": "Springfield Substation"
+        "name": "Springfield Substation",
+        "status": "operational"
       },
       "geometry": {
         "type": "Point",
@@ -33,7 +35,8 @@
       "type": "Feature",
       "properties": {
         "type": "substation",
-        "name": "Portland Substation"
+        "name": "Portland Substation",
+        "status": "proposed"
       },
       "geometry": {
         "type": "Point",
@@ -47,7 +50,8 @@
       "type": "Feature",
       "properties": {
         "type": "substation",
-        "name": "Providence Substation"
+        "name": "Providence Substation",
+        "status": "operational"
       },
       "geometry": {
         "type": "Point",
@@ -61,7 +65,8 @@
       "type": "Feature",
       "properties": {
         "type": "substation",
-        "name": "New Haven Substation"
+        "name": "New Haven Substation",
+        "status": "operational"
       },
       "geometry": {
         "type": "Point",
@@ -75,7 +80,8 @@
       "type": "Feature",
       "properties": {
         "type": "substation",
-        "name": "Albany Substation"
+        "name": "Albany Substation",
+        "status": "proposed"
       },
       "geometry": {
         "type": "Point",
@@ -89,7 +95,8 @@
       "type": "Feature",
       "properties": {
         "type": "substation",
-        "name": "Philadelphia Substation"
+        "name": "Philadelphia Substation",
+        "status": "operational"
       },
       "geometry": {
         "type": "Point",
@@ -103,7 +110,8 @@
       "type": "Feature",
       "properties": {
         "type": "substation",
-        "name": "Pittsburgh Substation"
+        "name": "Pittsburgh Substation",
+        "status": "decommissioned"
       },
       "geometry": {
         "type": "Point",
@@ -117,7 +125,8 @@
       "type": "Feature",
       "properties": {
         "type": "generator",
-        "name": "Narragansett Wind Farm"
+        "name": "Narragansett Wind Farm",
+        "status": "operational"
       },
       "geometry": {
         "type": "Point",
@@ -131,7 +140,8 @@
       "type": "Feature",
       "properties": {
         "type": "generator",
-        "name": "Susquehanna Nuclear Plant"
+        "name": "Susquehanna Nuclear Plant",
+        "status": "operational"
       },
       "geometry": {
         "type": "Point",
@@ -145,7 +155,8 @@
       "type": "Feature",
       "properties": {
         "type": "transmission",
-        "name": "Northern Transmission"
+        "name": "Northern Transmission",
+        "status": "operational"
       },
       "geometry": {
         "type": "LineString",
@@ -169,7 +180,8 @@
       "type": "Feature",
       "properties": {
         "type": "transmission",
-        "name": "Southern Transmission"
+        "name": "Southern Transmission",
+        "status": "operational"
       },
       "geometry": {
         "type": "LineString",
@@ -193,7 +205,8 @@
       "type": "Feature",
       "properties": {
         "type": "transmission",
-        "name": "Albany-Philadelphia Line"
+        "name": "Albany-Philadelphia Line",
+        "status": "operational"
       },
       "geometry": {
         "type": "LineString",
@@ -213,7 +226,8 @@
       "type": "Feature",
       "properties": {
         "type": "transmission",
-        "name": "Philadelphia-Pittsburgh Line"
+        "name": "Philadelphia-Pittsburgh Line",
+        "status": "operational"
       },
       "geometry": {
         "type": "LineString",
@@ -233,7 +247,8 @@
       "type": "Feature",
       "properties": {
         "type": "transmission",
-        "name": "Springfield-Providence Connector"
+        "name": "Springfield-Providence Connector",
+        "status": "operational"
       },
       "geometry": {
         "type": "LineString",
@@ -253,7 +268,8 @@
       "type": "Feature",
       "properties": {
         "type": "transmission",
-        "name": "Boston-Albany Line"
+        "name": "Boston-Albany Line",
+        "status": "operational"
       },
       "geometry": {
         "type": "LineString",
@@ -273,7 +289,8 @@
       "type": "Feature",
       "properties": {
         "type": "transmission",
-        "name": "Albany-Susquehanna Line"
+        "name": "Albany-Susquehanna Line",
+        "status": "operational"
       },
       "geometry": {
         "type": "LineString",
