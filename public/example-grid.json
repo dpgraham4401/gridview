@@ -126,7 +126,8 @@
       "properties": {
         "type": "generator",
         "name": "Narragansett Wind Farm",
-        "status": "operational"
+        "status": "operational",
+        "fuelType": "coal"
       },
       "geometry": {
         "type": "Point",
@@ -141,7 +142,8 @@
       "properties": {
         "type": "generator",
         "name": "Susquehanna Nuclear Plant",
-        "status": "operational"
+        "status": "operational",
+        "fuelType": "solar"
       },
       "geometry": {
         "type": "Point",

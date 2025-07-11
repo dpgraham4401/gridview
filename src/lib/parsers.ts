@@ -1,7 +1,7 @@
 /**
  * Logic for parsing and manipulating grid data.
  */
-import type {FeatureCollection, GeoJSON, Geometry} from "geojson";
+import type {FeatureCollection, LineString, Point} from "geojson";
 
 export type ComponentStatus = 'operational' | 'proposed' | 'decommissioned';
 
@@ -26,33 +26,18 @@ interface GeneratorProperties extends PowerGridBaseProperties {
     fuelType?: 'solar' | 'wind' | 'hydro' | 'nuclear' | 'natural gas' | 'hydrocarbon';
 }
 
-type PowerGridProperties = SubStationProperties | TransmissionLineProperties | GeneratorProperties;
+export type PowerGridProperties = SubStationProperties | TransmissionLineProperties | GeneratorProperties;
 
-export type PowerGridFeature = FeatureCollection<Geometry, SubStationProperties | TransmissionLineProperties | GeneratorProperties>;
+export type PowerGridFeatureCollection = FeatureCollection<Point | LineString, PowerGridProperties>;
 
-function addStyleToComponent(props: PowerGridProperties): PowerGridBaseProperties {
-    const style: Record<string, string> = {};
-    switch (props.type) {
-        case 'substation':
-            style.color = props.status === 'operational' ? 'green' : 'red';
-            break;
-        case 'transmission':
-            style.color = props.status === 'operational' ? 'blue' : 'orange';
-            break;
-        case 'generator':
-            style.color = props.status === 'operational' ? 'yellow' : 'gray';
-            break;
+export function parseGeoJSON(data: PowerGridFeatureCollection): PowerGridFeatureCollection {
+    if (!data || !data.features || !Array.isArray(data.features)) {
+        throw new Error("Only GeoJSON Feature Collections are supported.");
     }
-    return {...props, style};
-
-}
-
-export function parseGeoJSON(data: PowerGridFeature): GeoJSON {
     return {
         ...data,
         features: data.features.map(feature => ({
             ...feature,
-            properties: addStyleToComponent(feature.properties)
         }))
     };
 
