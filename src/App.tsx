@@ -5,7 +5,7 @@ import {GeoJsonUploader} from "@/components/GeoJsonUploader.tsx";
 import {Header} from "@/components/Header.tsx";
 import {GridMap} from "@/components/map/GridMap.tsx";
 import {parseGeoJSON, type PowerGridFeatureCollection} from "@/lib/parsers.ts";
-import {type ChangeEvent, useState} from "react";
+import {type ChangeEvent, useEffect, useState} from "react";
 import './App.css'
 import 'leaflet/dist/leaflet.css';
 
@@ -14,6 +14,17 @@ function App() {
     const mapTilerKey = import.meta.env.VITE_MAPTILER_API_KEY;
     const [geoJson, setGeoJson] = useState<PowerGridFeatureCollection | undefined>(undefined);
     const [uploadMessage, setUploadMessage] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (!geoJson) {
+            fetch("/example-grid.json")
+                .then(res => res.json())
+                .then(data => setGeoJson(parseGeoJSON(data)))
+                .catch(() => {
+                    console.error("Error fetching example geojson data.");
+                });
+        }
+    }, [geoJson, setGeoJson]);
 
 
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
