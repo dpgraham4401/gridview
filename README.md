@@ -1,74 +1,104 @@
 # Grid View
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple single-page web application for displaying the Power Grid in a user friendly view,
+allowing users to visualize and interact with the power grid data.
+Find the demo online
+at [https://deploy-preview-2--legendary-caramel-239b61.netlify.app/](https://deploy-preview-2--legendary-caramel-239b61.netlify.app/)
 
-Currently, two official plugins are available:
+## Problem Statement
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react)
-  uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc)
-  uses [SWC](https://swc.rs/) for Fast Refresh
+The power grid is a complex network of components that requires effective visualization for analysis and management.
+Speaking about it, and new interconnected generators, in a more concrete way requires a tool that can display
+that information in a easily digestible format.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default tseslint.config([
-    globalIgnores(['dist']),
+- Node.js (tested on version 22)
+- npm (or your favorite node package manager)
+
+### Installation
+
+1. Clone the repository and cd into the directory
+
+2. Install the dependencies
+   ```shell
+   npm install
+   ```
+
+3. Add the MapTiler API key to a .env file (optional)
+   ```shell
+   VITE_MAPTILER_API_KEY=your-maptiler-api-key
+   ```
+   Note: If you don't provide a MapTiler API key, the application will use OpenStreetMap tiles by default.
+
+4. Run the development server
+   ```shell
+   npm run dev
+   ```
+
+5. Open your browser and navigate to `http://localhost:3000`
+
+### GeoJSON Format
+
+GridView accepts common [GeoJSON](https://datatracker.ietf.org/doc/html/rfc7946),
+primarily [FeatureCollections](https://datatracker.ietf.org/doc/html/rfc7946#section-3.3)
+This GeoJSON exemplifies some of the expected properties for power grid components:
+
+Supported component types:
+
+- `substation` (Point geometry)
+- `generator` (Point geometry)
+- `transmission` (LineString geometry)
+
+```json
+{
+  "type": "FeatureCollection",
+  "features": [
     {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
-
-            // Remove tseslint.configs.recommended and replace with this
-            ...tseslint.configs.recommendedTypeChecked,
-            // Alternatively, use this for stricter rules
-            ...tseslint.configs.strictTypeChecked,
-            // Optionally, add this for stylistic rules
-            ...tseslint.configs.stylisticTypeChecked,
-
-            // Other configs...
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
+      "type": "Feature",
+      "properties": {
+        "type": "substation",
+        "name": "Example Substation",
+        "status": "operational"
+      },
+      "geometry": {
+        ...
+      }
     },
-])
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "generator",
+        "name": "Martin Marietta",
+        "status": "decommissioned"
+      },
+      "geometry": {
+        ...
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transmission",
+        "name": "p1-p2",
+        "status": "operational"
+      },
+      "geometry": {
+        ...
+      }
+    }
+  ]
+}
 ```
 
-You can also
-install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x)
-and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom)
-for React-specific lint rules:
+## Technologies Used
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React (v19)
+- Vite
+- TypeScript: Type-safe JavaScript, may have been overkill for this size project.
+- Leaflet: Lightweight mapping library for building interactive maps.
+- Tailwind CSS Utility-first CSS framework for styling, made development faster with less context switching.
+- React Toastify Toast for a fancy user notification experience.
 
-export default tseslint.config([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
-            // Enable lint rules for React
-            reactX.configs['recommended-typescript'],
-            // Enable lint rules for React DOM
-            reactDom.configs.recommended,
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-])
-```

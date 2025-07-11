@@ -15,7 +15,7 @@ export function Header() {
             <p className="text-gray-600 dark:text-gray-300 max-w-prose">
                 This default power grid is supplied for easy viewing, but you can also upload your own GeoJSON files.
                 For more information on the data format, download the
-                <a href="/public/example-grid.json" className="dark:text-cyan-400 text-cyan-800">
+                <a href="/example-grid.json" className="dark:text-cyan-400 text-cyan-800">
                     {' '}Example Grid GeoJSON
                 </a>
             </p>
