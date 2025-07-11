@@ -1,13 +1,14 @@
 /**
  * An app for displaying US Power Grid components and conducting power flow analysis.
  */
-import './App.css'
 import {GeoJsonUploader} from "@/components/GeoJsonUploader.tsx";
 import {Header} from "@/components/Header.tsx";
 import {GridMap} from "@/components/map/GridMap.tsx";
 import {parseGeoJSON} from "@/lib/parsers.ts";
 import type {GeoJSON} from "geojson";
 import {type ChangeEvent, useState} from "react";
+import './App.css'
+import 'leaflet/dist/leaflet.css';
 
 
 function App() {

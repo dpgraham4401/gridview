@@ -21,8 +21,15 @@ export function StationMarker({point}) {
         >
             <Popup>
                 {point.properties.name || 'Unnamed Substation'}<br/>
-                <em className="font-bold">Type</em>: {point.properties.type}<br/>
-                <em className="font-bold">Status</em>: {point.properties.status}<br/>
+                <ul>
+                    {Object.entries(point.properties)
+                        .filter(([key]) => key !== "style")
+                        .map(([key, value]) => (
+                            <li key={key}>
+                                <em className="font-bold">{key}</em>: {String(value)}
+                            </li>
+                        ))}
+                </ul>
             </Popup>
         </Marker>
     )
