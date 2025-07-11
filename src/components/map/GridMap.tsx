@@ -7,7 +7,6 @@ import {StationMarker} from "@/components/map/StationMarker.tsx";
 import {getMapBaseLayer, type MapBaseLayerName} from "@/lib/map.ts";
 import type {GeoJSON as GeoJSONType} from 'geojson';
 import {useRef, useState} from "react";
-import 'leaflet/dist/leaflet.css';
 import {MapContainer, Polyline, TileLayer} from "react-leaflet";
 
 const latitude = 42.3555;
@@ -29,7 +28,7 @@ export function GridMap({mapKey, geoJson}: GridMapProps) {
     return (
         <MapContainer center={[latitude, longitude]} zoom={7} ref={mapRef} className="w-full h-full">
             <TileLayer {...mapTileLayerProps} />
-            {points.map((point, index) => (
+            {points.map((point) => (
                 <StationMarker point={point} key={JSON.stringify(point.properties.name)}/>
             ))}
             {lines.map((line, index) => (
