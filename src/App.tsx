@@ -3,8 +3,8 @@
  */
 import './App.css'
 import {GeoJsonUploader} from "@/components/GeoJsonUploader.tsx";
-import {GridMap} from "@/components/GridMap.tsx";
 import {Header} from "@/components/Header.tsx";
+import {GridMap} from "@/components/map/GridMap.tsx";
 import {parseGeoJSON} from "@/lib/parsers.ts";
 import type {GeoJSON} from "geojson";
 import {type ChangeEvent, useState} from "react";
