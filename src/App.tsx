@@ -7,7 +7,7 @@ import {GridMap} from "@/components/GridMap.tsx";
 import {Header} from "@/components/Header.tsx";
 import {parseGeoJSON} from "@/lib/parsers.ts";
 import type {GeoJSON} from "geojson";
-import {useState} from "react";
+import {type ChangeEvent, useState} from "react";
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     const [uploadMessage, setUploadMessage] = useState<string | null>(null);
 
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
         const reader = new FileReader();
@@ -25,7 +25,8 @@ function App() {
                 const json = JSON.parse(event.target?.result as string);
                 setGeoJson(parseGeoJSON(json));
                 setUploadMessage('JSON file uploaded and parsed successfully!');
-            } catch {
+            } catch (error) {
+                console.error(error);
                 setUploadMessage('Error: Invalid JSON file.');
             }
         };
