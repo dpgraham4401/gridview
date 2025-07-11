@@ -4,7 +4,8 @@
  * which is well-maintained, relatively lightweight, good for 2D maps, should be mobile-friendly.
  */
 import {getMapBaseLayer, type MapBaseLayerName} from "@/lib/map.ts";
-import type {Feature, GeoJSON as GeoJSONType, GeoJsonProperties, Geometry} from 'geojson';
+import type {GeoJSON as GeoJSONType} from 'geojson';
+import type {StyleFunction} from "leaflet";
 import {useRef, useState} from "react";
 import 'leaflet/dist/leaflet.css';
 import {GeoJSON, MapContainer, TileLayer} from "react-leaflet";
@@ -35,8 +36,8 @@ export function GridMap({mapKey, geoJson}: GridMapProps) {
         }
     }
 
-    const getStyles = (feature: Feature<Geometry, GeoJsonProperties>) => {
-        if (!feature.properties) return {};
+    const getStyles: StyleFunction<any> = (feature) => {
+        if (!feature || !feature.properties) return {};
         const {style} = feature.properties;
         const color = style?.color || 'blue';
         return {
@@ -50,7 +51,12 @@ export function GridMap({mapKey, geoJson}: GridMapProps) {
         <MapContainer center={[latitude, longitude]} zoom={7} ref={mapRef} className="w-full h-full">
             <TileLayer {...mapTileLayerProps} />
             {geoJson && (
-                <GeoJSON data={geoJson} onEachFeature={onEachFeature} style={getStyles}/>
+                <GeoJSON
+                    key={JSON.stringify(geoJson)}
+                    data={geoJson}
+                    onEachFeature={onEachFeature}
+                    style={getStyles}
+                />
             )}
         </MapContainer>
     )
