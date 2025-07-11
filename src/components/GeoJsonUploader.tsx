@@ -6,7 +6,6 @@ import {useRef} from "react";
 
 interface GeoJsonUploaderProps {
     onChange: (geoJson: any) => void;
-    uploadMessage: string | null;
 }
 
 export function GeoJsonUploader({onChange}: GeoJsonUploaderProps) {

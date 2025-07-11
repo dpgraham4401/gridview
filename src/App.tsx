@@ -8,12 +8,12 @@ import {parseGeoJSON, type PowerGridFeatureCollection} from "@/lib/parsers.ts";
 import {type ChangeEvent, useEffect, useState} from "react";
 import './App.css'
 import 'leaflet/dist/leaflet.css';
+import {Slide, toast, ToastContainer} from "react-toastify";
 
 
 function App() {
     const mapTilerKey = import.meta.env.VITE_MAPTILER_API_KEY;
     const [geoJson, setGeoJson] = useState<PowerGridFeatureCollection | undefined>(undefined);
-    const [uploadMessage, setUploadMessage] = useState<string | null>(null);
 
     useEffect(() => {
         if (!geoJson) {
@@ -35,10 +35,10 @@ function App() {
             try {
                 const json = JSON.parse(event.target?.result as string);
                 setGeoJson(parseGeoJSON(json));
-                setUploadMessage('JSON file uploaded and parsed successfully!');
+                toast("JSON file uploaded and parsed successfully!")
             } catch (error) {
                 console.error(error);
-                setUploadMessage('Error: Invalid JSON file.');
+                toast("Could not parse the GEO JSON file. Please ensure it is valid.", {type: "error"});
             }
         };
         reader.readAsText(file);
@@ -46,15 +46,29 @@ function App() {
 
 
     return (
-        <div className="min-h-screen w-screen bg-slate-50 dark:bg-gray-900 transition-colors p-2">
+        <div className="min-h-screen w-screen bg-slate-50 dark:bg-gray-900 transition-colors p-3">
             <Header/>
-            <GeoJsonUploader onChange={handleFileChange} uploadMessage={uploadMessage}/>
+            <GeoJsonUploader onChange={handleFileChange}/>
             <div className="flex flex-col items-center justify-center">
                 <div
                     className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 w-11/12 h-[500px] md:h-[600px] xl:h-[700px] flex flex-col items-center transition-colors">
                     <GridMap mapKey={mapTilerKey} geoJson={geoJson}/>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                limit={1}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                transition={Slide}
+            />
         </div>
     );
 }
