@@ -4,8 +4,7 @@
 import {GeoJsonUploader} from "@/components/GeoJsonUploader.tsx";
 import {Header} from "@/components/Header.tsx";
 import {GridMap} from "@/components/map/GridMap.tsx";
-import {parseGeoJSON} from "@/lib/parsers.ts";
-import type {GeoJSON} from "geojson";
+import {parseGeoJSON, type PowerGridFeatureCollection} from "@/lib/parsers.ts";
 import {type ChangeEvent, useState} from "react";
 import './App.css'
 import 'leaflet/dist/leaflet.css';
@@ -13,7 +12,7 @@ import 'leaflet/dist/leaflet.css';
 
 function App() {
     const mapTilerKey = import.meta.env.VITE_MAPTILER_API_KEY;
-    const [geoJson, setGeoJson] = useState<GeoJSON | undefined>(undefined);
+    const [geoJson, setGeoJson] = useState<PowerGridFeatureCollection | undefined>(undefined);
     const [uploadMessage, setUploadMessage] = useState<string | null>(null);
 
 

@@ -5,7 +5,8 @@
  */
 import {StationMarker} from "@/components/map/StationMarker.tsx";
 import {getMapBaseLayer, type MapBaseLayerName} from "@/lib/map.ts";
-import type {GeoJSON as GeoJSONType} from 'geojson';
+import type {PowerGridProperties} from "@/lib/parsers.ts";
+import type {Feature, FeatureCollection, LineString, Point} from 'geojson';
 import {useRef, useState} from "react";
 import {MapContainer, Polyline, TileLayer} from "react-leaflet";
 
@@ -14,7 +15,15 @@ const longitude = -75.0602;
 
 interface GridMapProps {
     mapKey?: string;
-    geoJson?: GeoJSONType
+    geoJson?: FeatureCollection<Point | LineString, PowerGridProperties>
+}
+
+function isPointFeature(feature: Feature<Point | LineString, PowerGridProperties>): feature is Feature<Point, PowerGridProperties> {
+    return feature.geometry.type === 'Point';
+}
+
+function isLineStringFeature(feature: Feature<Point | LineString, PowerGridProperties>): feature is Feature<LineString, PowerGridProperties> {
+    return feature.geometry.type === 'LineString';
 }
 
 export function GridMap({mapKey, geoJson}: GridMapProps) {
@@ -22,8 +31,8 @@ export function GridMap({mapKey, geoJson}: GridMapProps) {
     const mapRef = useRef(null);
     const mapTileLayerProps = getMapBaseLayer(baseLayer, mapKey);
 
-    const points = geoJson?.features.filter(feature => feature.geometry.type === 'Point') || [];
-    const lines = geoJson?.features.filter(feature => feature.geometry.type === 'LineString') || [];
+    const points = geoJson?.features.filter(isPointFeature) || [];
+    const lines = geoJson?.features.filter(isLineStringFeature) || [];
 
     return (
         <MapContainer center={[latitude, longitude]} zoom={7} ref={mapRef} className="w-full h-full">
