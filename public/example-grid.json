@@ -1,0 +1,294 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "substation",
+        "name": "Boston Substation"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0589,
+          42.3601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "substation",
+        "name": "Springfield Substation"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.5898,
+          42.1015
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "substation",
+        "name": "Portland Substation"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.2553,
+          43.6615
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "substation",
+        "name": "Providence Substation"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.4128,
+          41.8240
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "substation",
+        "name": "New Haven Substation"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.9279,
+          41.3083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "substation",
+        "name": "Albany Substation"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.7562,
+          42.6526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "substation",
+        "name": "Philadelphia Substation"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.1652,
+          39.9526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "substation",
+        "name": "Pittsburgh Substation"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9959,
+          40.4406
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "generator",
+        "name": "Narragansett Wind Farm"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.3128,
+          41.4901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "generator",
+        "name": "Susquehanna Nuclear Plant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.1441,
+          41.0995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transmission",
+        "name": "Northern Transmission"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.0589,
+            42.3601
+          ],
+          [
+            -72.5898,
+            42.1015
+          ],
+          [
+            -70.2553,
+            43.6615
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transmission",
+        "name": "Southern Transmission"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.4128,
+            41.8240
+          ],
+          [
+            -72.9279,
+            41.3083
+          ],
+          [
+            -71.3128,
+            41.4901
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transmission",
+        "name": "Albany-Philadelphia Line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -73.7562,
+            42.6526
+          ],
+          [
+            -75.1652,
+            39.9526
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transmission",
+        "name": "Philadelphia-Pittsburgh Line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -75.1652,
+            39.9526
+          ],
+          [
+            -79.9959,
+            40.4406
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transmission",
+        "name": "Springfield-Providence Connector"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -72.5898,
+            42.1015
+          ],
+          [
+            -71.4128,
+            41.8240
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transmission",
+        "name": "Boston-Albany Line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.0589,
+            42.3601
+          ],
+          [
+            -73.7562,
+            42.6526
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "transmission",
+        "name": "Albany-Susquehanna Line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -73.7562,
+            42.6526
+          ],
+          [
+            -76.1441,
+            41.0995
+          ]
+        ]
+      }
+    }
+  ]
+}
+
